@@ -1,23 +1,31 @@
 #include <iostream>
 #include "UkladRownanLiniowych.hh"
-
-
-
+#include <fstream>
+#include <string>
 using std::cout;
 using std::endl;
 using std::cin;
-
+using std::string;
 int main()
 {
-  Wektor w(1,2,3),ww(4,5,6),www(7,8,9);
-  Macierz a(w,ww,www);
-  UkladRownanLiniowych l(a,w);
-  cout<<l;
-  cout<<a*a;
-  cout<<a.wyznacznik()<<endl;
-  cout<<w.dlugosc();
-
-  cout << endl << " Start programu " << endl << endl;
-  
-  cout <<endl;
+  UkladRownanLiniowych Ukl;
+  std::fstream plik;
+  string nazwa;
+  do {
+    if(!plik.good())
+    cerr << "Nie udało się wczytac poprawnie pliku, lub dane w pliku sa niepoprawne. Sprobuj ponownie."<<endl;
+  plik.clear();
+  cin >> nazwa;
+  plik.open(nazwa);
+  plik >> Ukl;
+  plik.close();
+  }
+  while(!plik.good());
+  cout<<"Uklad rownan do rozwiazania"<<endl<<Ukl<<endl;
+  cout<<"Rozwiazaniem rownania jest:"<<endl;
+  for(int i=0;i<ROZMIAR;++i){
+    cout<<"x_"<<i+1<<'='<<Ukl.rozwiaz()[i]<<endl;
+  }
+  cout<<"Wektor bledu:("<<Ukl.wektor_bledu()<<")"<<endl;
+  cout<<"Dlugosc wektora bledu:"<<Ukl.wektor_bledu().dlugosc()<<endl;
 }

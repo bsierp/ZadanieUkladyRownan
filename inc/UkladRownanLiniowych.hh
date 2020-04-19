@@ -9,13 +9,14 @@ class UkladRownanLiniowych {
   Macierz A;
   Wektor b;
   public:
-  const Wektor & rozwiaz();
+  Wektor rozwiaz();
   UkladRownanLiniowych ();
   UkladRownanLiniowych(const Macierz & M, const Wektor & W);
   const Wektor & zwroc_wektor_wolny() const;
   void zmien_wektor_wolny(const Wektor & W);
   const Macierz & zwroc_macierz_glowna() const;
   void zmien_macierz_glowna(const Macierz & M);
+  Wektor wektor_bledu() const;
 };
 
 

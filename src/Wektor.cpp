@@ -1,5 +1,5 @@
 #include "Wektor.hh"
-#include <cmath>
+
 
 Wektor::Wektor(){
    for(int i=0;i<ROZMIAR;i++){
@@ -25,7 +25,7 @@ double & Wektor::operator [](int index){
     }
     return this->tab[index];
 }
-  const Wektor Wektor::operator +(const Wektor & skl) const{
+  Wektor Wektor::operator +(const Wektor & skl) const{
       Wektor wynik;
             for(int i=0;i<ROZMIAR;i++){
                 wynik[i]=this->tab[i]+skl[i];
@@ -33,7 +33,7 @@ double & Wektor::operator [](int index){
       
         return wynik;
   }
-  const Wektor Wektor::operator - (const Wektor & skl) const{
+  Wektor Wektor::operator - (const Wektor & skl) const{
      Wektor wynik;
             for(int i=0;i<ROZMIAR;i++){
                 wynik[i]=this->tab[i]-skl[i];
@@ -48,7 +48,7 @@ double & Wektor::operator [](int index){
       }
       return wynik;
   }
-  const Wektor Wektor::operator *(double skl) const{
+  Wektor Wektor::operator *(double skl) const{
      Wektor wynik;
             for(int i=0;i<ROZMIAR;i++){
                 wynik[i]=this->tab[i]*skl;
@@ -64,10 +64,9 @@ double & Wektor::operator [](int index){
       return sqrt(wynik);
   }
   bool Wektor::operator == (const Wektor & skl) const{
-      bool rowne;
+      double epsilon=0.00000000000001;
       for(int i=0;i<ROZMIAR;i++){
-      rowne=this->tab[i]==skl[i];
-      if(rowne==1)
+      if(abs(this->tab[i]-skl[i])<epsilon)
       continue;
       else
       {

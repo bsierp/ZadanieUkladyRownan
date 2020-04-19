@@ -1,6 +1,6 @@
 #ifndef WEKTOR_HH
 #define WEKTOR_HH
-
+#include <cmath>
 #include "rozmiar.h"
 #include <iostream>
 
@@ -17,10 +17,10 @@ class Wektor {
   Wektor();
   const double & operator [](int index) const;
   double & operator [](int index);
-  const Wektor  operator +(const Wektor & skl) const;
-  const Wektor  operator - (const Wektor & skl) const;
+  Wektor  operator +(const Wektor & skl) const;
+  Wektor  operator - (const Wektor & skl) const;
   double  operator *(const Wektor & skl) const;
-  const Wektor  operator *(double skl) const;
+  Wektor  operator *(double skl) const;
   double dlugosc() const;
   bool operator == (const Wektor & skl) const;
   bool operator != (const Wektor & skl) const;
